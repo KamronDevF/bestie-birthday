@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>for my bestie weirdo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap');
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  margin:0; min-height:100vh; font-family:'DM Sans',sans-serif;
+  background:linear-gradient(145deg,#ffd9e8 0%,#fff0f6 45%,#cdefff 100%);
+  color:#4b303b; overflow-x:hidden;
+}
+body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(2px)}
+body:before{width:220px;height:220px;background:#ff9fc6;opacity:.35;top:-70px;right:-60px}
+body:after{width:250px;height:250px;background:#83d9ff;opacity:.3;bottom:-100px;left:-90px}
+
+.wrap{width:min(100%,520px);margin:auto;padding:22px 18px 45px}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.7}
+.logo{background:#fff8fb;padding:8px 12px;border-radius:99px;box-shadow:0 5px 18px #b85d8125}
+.counter{font-family:'Playfair Display';font-size:16px}
+
+.card{
+  margin-top:18px;background:#ffffffb8;border:1px solid #ffffffdd;
+  backdrop-filter:blur(15px);border-radius:30px;padding:28px 22px;
+  box-shadow:0 18px 55px #87445c1f;min-height:590px;
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
+}
+.sparkle{position:absolute;font-size:22px;opacity:.65;animation:float 3s ease-in-out infinite}
+.s1{top:25px;right:27px}.s2{bottom:30px;left:24px;animation-delay:1s}.s3{top:43%;right:15px;font-size:14px;animation-delay:1.7s}
+@keyframes float{50%{transform:translateY(-8px) rotate(8deg)}}
+
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#d65b88;margin-bottom:13px}
+h1{font-family:'Playfair Display',serif;font-size:38px;line-height:1.05;margin:0 0 17px;color:#492d38}
+p{font-size:16px;line-height:1.65;margin:0 0 24px}
+.big{font-size:20px;font-weight:700;line-height:1.45}
+.emoji{font-size:48px;margin-bottom:10px}
+button{
+  width:100%;border:0;border-radius:18px;padding:16px 18px;margin-top:10px;
+  font:700 15px 'DM Sans';cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#ee6e9f,#d85e8d);
+  box-shadow:0 9px 22px #d65b8835;transition:.18s;
+}
+button:active{transform:scale(.97)}
+button.alt{background:#fff;color:#9c526e;border:1px solid #f0c4d4;box-shadow:none}
+.progress{height:6px;background:#ffffff99;border-radius:99px;margin-top:18px;overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#ef6da0,#65c9f3);transition:.5s}
+
+.draw{
+  width:100%;height:280px;border-radius:24px;object-fit:cover;
+  background:linear-gradient(135deg,#ffe0ec,#d9f4ff);
+  border:2px dashed #eaa4bd;display:flex;align-items:center;justify-content:center;
+  color:#a15a73;text-align:center;padding:20px;font-weight:700;
+}
+.draw img{width:100%;height:100%;object-fit:cover;border-radius:20px;display:none}
+.letter{
+  margin-top:22px;background:#fff9fc;border-radius:24px;padding:24px 20px;
+  border:1px solid #f3cbd9;box-shadow:0 10px 30px #87445c15;
+}
+.letter h2{font-family:'Playfair Display';font-size:27px;margin:0 0 15px}
+.letter p{font-size:15px;white-space:pre-line}
+.hidden{display:none!important}
+.fade{animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.heart{position:fixed;pointer-events:none;animation:rise 1.8s ease-out forwards;font-size:20px}
+@keyframes rise{to{transform:translateY(-180px) rotate(25deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span class="logo">just for u 💋</span><span class="counter" id="counter">01 / 05</span></div>
+
+  <main class="card" id="card">
+    <span class="sparkle s1">✦</span><span class="sparkle s2">♡</span><span class="sparkle s3">✧</span>
+    <div id="screen" class="fade">
+      <div class="emoji">🎀</div>
+      <div class="kicker">a tiny birthday thing</div>
+      <h1>Привеееет, мояяя Бестиии 💗</h1>
+      <p>Корочеее, я тут решил, что буду немножечко креативным и сделал тебе маленький интерактивчик.</p>
+      <p>На большого бюджета не хватило, <b>so pls pretend it's expensive.</b> 😭</p>
+      <button onclick="next()">ну че, готова? 💅</button>
+    </div>
+  </main>
+
+  <div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+
+<script>
+const steps=[
+ {title:"LEVEL 1",emoji:"💋",text:"Такссс... официально начинаем.",sub:"Ты готова потратить примерно 47 секунд своей жизни на этот шедевр?",buttons:["LET'S GOOOO!","я уже тут, давай 😭"]},
+ {title:"LEVEL 2",emoji:"👑",text:"Первый тест на diva-статус.",sub:"Сегодня ты обязана быть главной героиней. Другие персонажи временно не допущены.",buttons:["Obviously 💅","это даже не вопрос"]},
+ {title:"LEVEL 3",emoji:"🎀",text:"Очень важный вопрос.",sub:"Если жизнь дала тебе лимоны, что ты делаешь?",buttons:["делаю лимонад 🍋","кладу лимон рядом и иду дальше"]},
+ {title:"LEVEL 4",emoji:"🪩",text:"Мы почти там...",sub:"Выдержишь ещё один вопрос или сайт уже слишком красивый для тебя?",buttons:["выдержу, я сильная","ДАВАЙ УЖЕ 😭"]},
+ {title:"FINAL LEVEL",emoji:"💗",text:"Последняя кнопка.",sub:"Нажми её. Я серьёзно. Я слишком долго это делал.",buttons:["ОТКРЫВАЙ 🎁"]}
+];
+
+let step=0;
+function next(){
+  if(step===0){step=1; render();}
+  else if(step<5){step++; if(step===5) finish(); else render();}
+  burst();
+}
+function render(){
+  const s=steps[step-1];
+  document.getElementById('counter').textContent=String(step).padStart(2,'0')+" / 05";
+  document.getElementById('bar').style.width=(step/5*100)+"%";
+  document.getElementById('screen').innerHTML=`
+    <div class="emoji">${s.emoji}</div>
+    <div class="kicker">${s.title}</div>
+    <h1>${s.text}</h1>
+    <p>${s.sub}</p>
+    ${s.buttons.map((b,i)=>`<button class="${i?'alt':''}" onclick="next()">${b}</button>`).join('')}
+  `;
+  document.getElementById('screen').className="fade";
+}
+function finish(){
+  document.getElementById('counter').textContent="♡ / ♡";
+  document.getElementById('bar').style.width="100%";
+  document.getElementById('screen').innerHTML=`
+    <div class="emoji">🎂✨</div>
+    <div class="kicker">mission complete</div>
+    <h1>HAPPY BIRTHDAY, BESTIE 💗</h1>
+    <div class="draw">
+      <img id="ourPic" src="our-drawing.jpg" alt="our drawing">
+      <div id="placeholder">🖼️<br><br>сюда вставь наш рисунок<br><small>назови файл <b>our-drawing.jpg</b></small></div>
+    </div>
+    <div class="letter">
+      <h2>для одной особенной бестии 💌</h2>
+      <p>С ДНЁМ РОЖДЕНИЯЯЯЯЯ 💗
+
+Я реально хотел сделать тебе что-то необычное, но у меня было ваще мало времени, так что получилось как-то так 😭🎀
+
+Короче, я хочу пожелать тебе, чтобы у тебя было как можно больше моментов, которые хочется запомнить. Чтобы ты чаще смеялась, меньше переживала из-за всякой фигни и всегда оставалась той самой тобой. И всегда была моей Bestie Weirdo 💗🫵🏻
+
+Спасибо за все наши разговоры, приколы, странные моменты и вообще за то, что ты есть в моей жизни. Надеюсь, впереди у нас ещё тонна историй, которые потом будем вспоминать и ржать с них 😭😂
+
+И ещё совет: если будешь выбирать парня для себя, то не опускай стандарты. Когда твой друг даже делает такие вещи, парень как минимум должен купить самолёт, я не знаю 🙄✈️. Вхехе, короче, выбирай того, кто будет добиваться тебя и делать всё, чтобы ты чувствовала себя принцессой рядом с ним 👑💗
+(это был братский совет, к слову 🌚😁)
+
+Корочееее, с днём рождения, моя бестииии 💗🎀
+Будь счастлива. Всегда. 🫶🏻✨
+
+
+P.S. Да бюджет всё ещё не увеличался, так что это всё😭</p>
+    </div>
+    <button onclick="burst();this.textContent='ЕЩЁ РАЗ С ДНЁМ РОЖДЕНИЯ 💗'">ещё раз поздравить 🎀</button>
+  `;
+  const img=document.getElementById('ourPic');
+  img.onload=()=>{img.style.display='block';document.getElementById('placeholder').style.display='none'};
+  img.onerror=()=>{};
+  document.getElementById('screen').className="fade";
+  setTimeout(()=>{for(let i=0;i<18;i++)setTimeout(burst,i*70)},100);
+}
+function burst(){
+  const e=document.createElement('div');e.className='heart';
+  e.textContent=['💗','🎀','✨','💋','♡'][Math.floor(Math.random()*5)];
+  e.style.left=(10+Math.random()*80)+'vw';e.style.bottom='70px';
+  document.body.appendChild(e);setTimeout(()=>e.remove(),1800);
+}
+</script>
+</body>
+</html>
